@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 
-public class APITest {
+public class Ivy {
     @BeforeClass
     public static void setup() {
         RestAssured.baseURI = "https://petstore.swagger.io/v2";
