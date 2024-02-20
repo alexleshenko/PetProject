@@ -11,7 +11,8 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Roma {
+
+public class IvyTest {
     @BeforeClass
     public static void setup() {
         RestAssured.baseURI = "https://petstore.swagger.io/v2";
@@ -20,7 +21,7 @@ public class Roma {
     @Test
     public void createPet() throws IOException {
 
-        String requestBody = new String(Files.readAllBytes(Paths.get("src/main/resources/Roma.json")));
+        String requestBody = new String(Files.readAllBytes(Paths.get("src/main/resources/Ivy.json")));
 
         SoftAssert softAssert = new SoftAssert();
 
@@ -39,8 +40,8 @@ public class Roma {
         softAssert.assertNotNull(id, "Pet ID should not be null");
         softAssert.assertNotEquals(id.longValue(), 0L, "Pet ID should not be 0");
 
-        softAssert.assertEquals(response.path("name"), "Roma", "Pet name should be Roma");
-        softAssert.assertEquals(response.path("status"), "unavailable", "Pet status should be available");
+        softAssert.assertEquals(response.path("name"), "Ivy", "Pet name should be Ivy");
+        softAssert.assertEquals(response.path("status"), "available", "Pet status should be available");
 
         System.out.println("Created pet ID: " + id);
 
