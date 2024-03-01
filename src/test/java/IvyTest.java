@@ -4,6 +4,7 @@ import io.restassured.response.Response;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import utils.ConfigLoader;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,11 +15,11 @@ import static io.restassured.RestAssured.given;
 
 public class IvyTest {
     @BeforeClass
-    public static void setup() {
-        RestAssured.baseURI = "https://petstore.swagger.io/v2";
+    public void setUp() {
+        RestAssured.baseURI = ConfigLoader.getBaseUri();
     }
 
-    @Test
+    @Test(priority = 1)
     public void createPet() throws IOException {
 
         String requestBody = new String(Files.readAllBytes(Paths.get("src/main/resources/Ivy.json")));
@@ -47,4 +48,7 @@ public class IvyTest {
 
         softAssert.assertAll();
     }
+
+
+
 }

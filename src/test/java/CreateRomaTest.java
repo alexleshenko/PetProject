@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class RomaTest {
+public class CreateRomaTest {
     @BeforeClass
     public static void setup() {
         RestAssured.baseURI = "https://petstore.swagger.io/v2";
